@@ -304,7 +304,7 @@ Contributions are welcome! Here's how to get started:
 
 ```bash
 # Fork the repo, then:
-git clone https://github.com/your-username/ai-resume-analyzer.git
+git clone https://github.com/rashmii2210/ai-resume-analyzer.git
 cd ai-resume-analyzer
 git checkout -b feature/your-feature-name
 
