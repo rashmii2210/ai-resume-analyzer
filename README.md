@@ -10,7 +10,6 @@ A machine learning system that analyzes resumes, predicts the most suitable job 
 [![FastAPI](https://img.shields.io/badge/FastAPI-REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![Sentence Transformers](https://img.shields.io/badge/BERT-Embeddings-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://www.sbert.net)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 ---
 
