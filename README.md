@@ -22,6 +22,7 @@ A machine learning system that analyzes resumes, predicts the most suitable job 
 ## 📋 Table of Contents
 
 - [Problem Statement](#-problem-statement)
+- [Demo](#-demo)
 - [Features](#-features)
 - [How It Works](#-how-it-works)
 - [Results](#-results)
@@ -46,6 +47,15 @@ Manual resume screening is slow and error-prone:
 - Candidates rarely get useful feedback on how well they fit a role
 
 **This system automates the process** using a hybrid NLP pipeline that understands both *keywords* and *semantic meaning*, giving recruiters and candidates a fast, accurate role prediction and match score.
+
+---
+
+## ✨ Demo
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/b15c21da-8ca1-4175-8bc0-cf6aa4e14628" width="500" autoplay loop controls playsinline></video>
+</p>
+
+---
 
 ---
 
