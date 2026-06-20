@@ -1,0 +1,9 @@
+Software Engineer with 3 years of experience in Python, Java,
+and JavaScript. Developed REST APIs using Flask and Django.
+Worked with machine learning models using scikit-learn and TensorFlow.
+Experience with SQL databases, MongoDB, Git, Docker.
+Built data pipelines and deployed models on AWS.
+Strong knowledge of algorithms, data structures, and system design.
+Bachelor of Technology in Computer Science.
+Skills: Python, Java, Machine Learning, Deep Learning, NLP,
+TensorFlow, SQL, MongoDB, Docker, AWS, Git, REST API.

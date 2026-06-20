@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Resume Analyzer</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 6px;
+  }
+
+  p.subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fafafa;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  button:disabled {
+    background: #9bbcdb;
+    cursor: not-allowed;
+  }
+
+  .result {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .result p {
+    margin: 4px 0;
+  }
+
+  .loading {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    margin-top: 14px;
+    display: none;
+  }
+
+  .error {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 14px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>AI Resume Analyzer</h2>
+  <p class="subtitle">Upload a resume and paste a job description to see how well they match.</p>
+
+  <div class="field">
+    <label for="resumeFile">Resume (PDF or TXT)</label>
+    <input type="file" id="resumeFile" accept=".pdf,.txt" />
+  </div>
+
+  <div class="field">
+    <label for="jobDesc">Job Description</label>
+    <textarea id="jobDesc" placeholder="Paste the job description here..."></textarea>
+  </div>
+
+  <button id="analyzeBtn" onclick="analyze()">Analyze</button>
+
+  <div class="loading" id="loading">Analyzing...</div>
+  <div class="error" id="error"></div>
+
+  <div class="result">
+    <p><b>Predicted Role:</b> <span id="role">-</span></p>
+    <p><b>Match Score:</b> <span id="score">-</span></p>
+  </div>
+</div>
+
+<script>
+async function analyze() {
+  const fileInput = document.getElementById("resumeFile");
+  const jobDesc = document.getElementById("jobDesc").value;
+  const btn = document.getElementById("analyzeBtn");
+  const loading = document.getElementById("loading");
+  const error = document.getElementById("error");
+
+  error.style.display = "none";
+
+  if (!fileInput.files.length || !jobDesc) {
+    alert("Please upload a resume and enter a job description");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("resume", fileInput.files[0]);
+  formData.append("job_description", jobDesc);
+
+  btn.disabled = true;
+  loading.style.display = "block";
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/analyze", {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.detail || "Something went wrong on the server.");
+    }
+
+    const data = await response.json();
+
+    document.getElementById("role").innerText = data.predicted_role;
+    document.getElementById("score").innerText = data.match_score + "%";
+
+  } catch (err) {
+    error.innerText = err.message || "Could not connect to the server. Make sure the API is running.";
+    error.style.display = "block";
+  } finally {
+    btn.disabled = false;
+    loading.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

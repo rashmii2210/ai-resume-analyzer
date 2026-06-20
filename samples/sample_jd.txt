@@ -1,0 +1,5 @@
+We are looking for a Data Scientist with experience in Python,
+Machine Learning, Deep Learning, NLP, TensorFlow, PyTorch,
+scikit-learn, SQL, MongoDB, BERT, Transformers, REST API,
+FastAPI, data analysis, statistical modeling, pandas, numpy.
+Strong knowledge of algorithms and model deployment required.

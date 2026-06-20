@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+matplotlib
+seaborn
+numpy
+pdfplumber
+sentence-transformers
+fastapi
+uvicorn
+python-multipart

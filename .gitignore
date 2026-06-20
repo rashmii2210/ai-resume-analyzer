@@ -1,0 +1,25 @@
+#PYTHON / RUNTIME DEPENDENCIES
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#LARGE DATA & MODEL ARTIFACTS (regenerate locally — see README)
+data/
+models/
+
+#PERSONAL / SUBMISSION DOCUMENTS (not for public repo)
+*.pdf
+!samples/sample_resume.pdf
+
+#PERATING SYSTEM RUNTIME ARTIFACTS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+#IDE / EDITOR SETTINGS
+.vscode/
+.idea/
